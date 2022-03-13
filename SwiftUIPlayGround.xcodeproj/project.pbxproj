@@ -15,7 +15,8 @@
 		5257C29C27DC98C300701C47 /* SwiftUIPlayGroundUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C29B27DC98C300701C47 /* SwiftUIPlayGroundUITests.swift */; };
 		5257C29E27DC98C300701C47 /* SwiftUIPlayGroundUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C29D27DC98C300701C47 /* SwiftUIPlayGroundUITestsLaunchTests.swift */; };
 		5257C2AB27DDD3D300701C47 /* Parchment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5257C2AA27DDD3D300701C47 /* Parchment.framework */; };
-		5257C2AD27DDD55000701C47 /* TabPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C2AC27DDD55000701C47 /* TabPager.swift */; };
+		5257C2AD27DDD55000701C47 /* CustomTabPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C2AC27DDD55000701C47 /* CustomTabPager.swift */; };
+		5257C2B327DDD69C00701C47 /* TabPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257C2B227DDD69C00701C47 /* TabPager.swift */; };
 		547E2FDE1E25C6917C6457A4 /* Pods_SwiftUIPlayGround_SwiftUIPlayGroundUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B213D4663670757374E4E5 /* Pods_SwiftUIPlayGround_SwiftUIPlayGroundUITests.framework */; };
 		5BB859944364725CEEA4F803 /* Pods_SwiftUIPlayGround.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2785826D490F26E7881FEBE /* Pods_SwiftUIPlayGround.framework */; };
 		6FFEFA5D382B1CD039387162 /* Pods_SwiftUIPlayGroundTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4085D2D69544AA173245CD97 /* Pods_SwiftUIPlayGroundTests.framework */; };
@@ -55,7 +56,8 @@
 		5257C29B27DC98C300701C47 /* SwiftUIPlayGroundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPlayGroundUITests.swift; sourceTree = "<group>"; };
 		5257C29D27DC98C300701C47 /* SwiftUIPlayGroundUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPlayGroundUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5257C2AA27DDD3D300701C47 /* Parchment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Parchment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5257C2AC27DDD55000701C47 /* TabPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPager.swift; sourceTree = "<group>"; };
+		5257C2AC27DDD55000701C47 /* CustomTabPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabPager.swift; sourceTree = "<group>"; };
+		5257C2B227DDD69C00701C47 /* TabPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPager.swift; sourceTree = "<group>"; };
 		9E3C94D65F574F1C104813B2 /* Pods-SwiftUIPlayGround.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIPlayGround.release.xcconfig"; path = "Target Support Files/Pods-SwiftUIPlayGround/Pods-SwiftUIPlayGround.release.xcconfig"; sourceTree = "<group>"; };
 		B07284674C9830D6D83EB1A2 /* Pods-SwiftUIPlayGround-SwiftUIPlayGroundUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUIPlayGround-SwiftUIPlayGroundUITests.release.xcconfig"; path = "Target Support Files/Pods-SwiftUIPlayGround-SwiftUIPlayGroundUITests/Pods-SwiftUIPlayGround-SwiftUIPlayGroundUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C2785826D490F26E7881FEBE /* Pods_SwiftUIPlayGround.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUIPlayGround.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				5257C28227DC98C200701C47 /* MainView.swift */,
-				5257C2AC27DDD55000701C47 /* TabPager.swift */,
+				5257C2AC27DDD55000701C47 /* CustomTabPager.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -178,6 +180,7 @@
 		5257C2B127DDD59500701C47 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				5257C2B227DDD69C00701C47 /* TabPager.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -444,9 +447,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5257C2AD27DDD55000701C47 /* TabPager.swift in Sources */,
+				5257C2AD27DDD55000701C47 /* CustomTabPager.swift in Sources */,
 				5257C28327DC98C200701C47 /* MainView.swift in Sources */,
 				5257C28127DC98C200701C47 /* SwiftUIPlayGroundApp.swift in Sources */,
+				5257C2B327DDD69C00701C47 /* TabPager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

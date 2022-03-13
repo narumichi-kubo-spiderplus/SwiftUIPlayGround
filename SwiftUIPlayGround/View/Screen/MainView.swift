@@ -11,7 +11,7 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink("TabPager", destination: TabPager())
+                NavigationLink("TabPager", destination: CustomTabPager())
                 
             }
             .navigationTitle("SwiftUIPlayGround")
