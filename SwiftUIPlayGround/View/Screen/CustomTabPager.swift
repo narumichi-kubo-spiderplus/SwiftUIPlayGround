@@ -9,13 +9,23 @@ import SwiftUI
 import Parchment
 
 struct CustomTabPager: View {
+    let items = [
+        PagingIndexItem(index: 0, title: "おはよう"),
+        PagingIndexItem(index: 1, title: "こんにちわ"),
+        PagingIndexItem(index: 2, title: "こんばんわ"),
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabPager(items: items) { item in
+            Text(item.title)
+                .font(.largeTitle)
+                .foregroundColor(.gray)
+        }
     }
 }
 
 struct CustomTabPager_Previews: PreviewProvider {
     static var previews: some View {
-        TabPager()
+        CustomTabPager()
     }
 }
