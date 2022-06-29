@@ -7,40 +7,23 @@ import SwiftUI
 /// アプリ全体で利用できるカスタムTabPager
 /// OSSのParchmentを利用している
 @available(iOS 13.0, *)
-public struct TabPager<Item: PagingItem, Page: View>: View {
+struct TabPager<Item: PagingItem, Page: View>: View {
+    // 選択中のTabIndex
+    @Binding var selectedIndex: Int
+    // [PagingItem(index, title)]のリスト
+    var items = [Item]()
     // 返り値でindex, titleが入ったオブジェクトが渡される
     let content: (Item) -> Page
-    // ページングのスタイル
-    private let options: PagingOptions
-    // [PagingItem(index, title)]のリスト
-    private var items = [Item]()
+    // ページングのオプション
+    let options: CustomPagingOptions = CustomPagingOptions()
     // スクロール時に発火
-    private var onWillScroll: ((PagingItem) -> Void)?
+    var onWillScroll: ((PagingItem) -> Void)?
     // スクロール後に発火
-    private var onDidScroll: ((PagingItem) -> Void)?
+    var onDidScroll: ((PagingItem) -> Void)?
     // 選択時に発火
-    private var onDidSelect: ((PagingItem) -> Void)?
-    // タブ下のBorderを非表示にするかどうか
-    private var isHiddenTabBorder: Bool
-    // 選択中のTabIndex
-    @Binding private var selectedIndex: Int
-
-    // 初期化
-    public init(
-        options: PagingOptions = PagingOptions(),
-        items: [Item],
-        selectedIndex: Binding<Int> = .constant(Int.max),
-        isHiddenTabBorder: Bool = false,
-        content: @escaping (Item) -> Page
-    ) {
-        _selectedIndex = selectedIndex
-        self.options = options
-        self.items = items
-        self.isHiddenTabBorder = isHiddenTabBorder
-        self.content = content
-    }
-
-    public var body: some View {
+    var onDidSelect: ((PagingItem) -> Void)?
+    
+    var body: some View {
         PagingController(
             items: items,
             options: options,
@@ -48,27 +31,35 @@ public struct TabPager<Item: PagingItem, Page: View>: View {
             onWillScroll: onWillScroll,
             onDidScroll: onDidScroll,
             onDidSelect: onDidSelect,
-            isHiddenTabBorder: isHiddenTabBorder,
             selectedIndex: $selectedIndex
         )
     }
+    
+    /// ページングのスタイルを定義する構造体
+    struct CustomPagingOptions {
+        // ページングのスタイル
+        let options: PagingOptions = PagingOptions()
+        // タブ下のBorderを非表示にするかどうか
+        let isHiddenTabBorder: Bool = false
+    }
 
+    
     // スクロール後に発火
-    public func didScroll(_ action: @escaping (PagingItem) -> Void) -> Self {
+    private func didScroll(_ action: @escaping (PagingItem) -> Void) -> Self {
         var view = self
         view.onDidScroll = action
         return view
     }
 
     // スクロール時に発火
-    public func willScroll(_ action: @escaping (PagingItem) -> Void) -> Self {
+    private func willScroll(_ action: @escaping (PagingItem) -> Void) -> Self {
         var view = self
         view.onWillScroll = action
         return view
     }
 
     // 選択時に発火
-    public func didSelect(_ action: @escaping (PagingItem) -> Void) -> Self {
+    private func didSelect(_ action: @escaping (PagingItem) -> Void) -> Self {
         var view = self
         view.onDidSelect = action
         return view
@@ -82,12 +73,11 @@ public struct TabPager<Item: PagingItem, Page: View>: View {
     // TabPagerを生成、レイアウトのカスタム、スクロール時に関数を発火させる
     struct PagingController: UIViewControllerRepresentable {
         let items: [Item]
-        let options: PagingOptions
+        let options: CustomPagingOptions
         let content: (Item) -> Page
         var onWillScroll: ((PagingItem) -> Void)?
         var onDidScroll: ((PagingItem) -> Void)?
         var onDidSelect: ((PagingItem) -> Void)?
-        var isHiddenTabBorder: Bool
 
         @Binding var selectedIndex: Int
 
@@ -99,10 +89,10 @@ public struct TabPager<Item: PagingItem, Page: View>: View {
         func makeUIViewController(
             context: UIViewControllerRepresentableContext<PagingController>
         ) -> CustomPagingViewController {
-            let pagingViewController = CustomPagingViewController(options: options)
+            let pagingViewController = CustomPagingViewController(options: options.options)
 
             // Borderを表示するかどうか
-            if isHiddenTabBorder {
+            if options.isHiddenTabBorder {
                 pagingViewController.borderOptions = .hidden
             }
             // tabの数が1つだった場合、Indicatorを非表示にする
